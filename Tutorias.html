@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tutorias</title>
+    </head>
+    <body style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        <header>
+            <h1>Formulario Tutorias</h1>
+        </header>
+        <section id="Formulario">
+            <!--Dirección de Correo-->
+            <form action="mailto:183636@upslp.edu.mx" method="post">
+                <!--Nombre, matrícula y semestre-->
+                <p>Nombre<br><input type="text" name="Nombre" size="50"></p>
+                <p>Matrícula<br><input type="number" name="Matricula" min="200000"></p>
+                <p>Semestre<br>
+                    <input type="radio" name="Semestre" value="1">1
+                    <input type="radio" name="Semestre" value="2">2
+                    <input type="radio" name="Semestre" value="3">3
+                    <input type="radio" name="Semestre" value="4">4
+                    <input type="radio" name="Semestre" value="5">5
+                    <input type="radio" name="Semestre" value="6">6
+                </p>
+                <!--Fecha-->
+                <p>Fecha<br><input type="date" name="Fecha"></p>
+                <!--Materias-->
+                <p>Materia 1<input type="text" name="Materia1" size="20"></p>
+                <p>Materia 2<input type="text" name="Materia2" size="20"></p>
+                <p>Materia 3<input type="text" name="Materia3" size="20"></p>
+                <p>Materia 4<input type="text" name="Materia4" size="20"></p>
+                <p>Materia 5<input type="text" name="Materia5" size="20"></p>
+                <p>Materia 6<input type="text" name="Materia6" size="20"></p>
+                <!--Calificaciones-->
+                <p>Califiación Materia 1<input type="number" name="C1" min="0" max="10"></p>
+                <p>Califiación Materia 2<input type="number" name="C2" min="0" max="10"></p>
+                <p>Califiación Materia 3<input type="number" name="C3" min="0" max="10"></p>
+                <p>Califiación Materia 4<input type="number" name="C4" min="0" max="10"></p>
+                <p>Califiación Materia 5<input type="number" name="C5" min="0" max="10"></p>
+                <p>Califiación Materia 6<input type="number" name="C6" min="0" max="10"></p>
+                <!--Motivos de reprobación-->
+                <p>Motivo por el que reprobaste<br>
+                    <textarea name="Motivo" id="TextoMotivos" cols="30" rows="10" placeholder="Comenta el por qué"></textarea>
+                </p>
+                <!--Desempeño-->
+                <p>Cómo evalúas tu desempeño del semestre anterior<br>
+                    <input type="radio" name="Desempeño" value="Malo">Malo
+                    <input type="radio" name="Desempeño" value="Regular">Regular
+                    <input type="radio" name="Desempeño" value="Bueno">Bueno
+                    <input type="radio" name="Desempeño" value="Excelente">Excelente
+                </p>
+            </form>
+        </section>
+    </body>
+</html>

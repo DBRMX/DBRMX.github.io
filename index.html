@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="fonts/monoton.woff2">
+    <link rel="stylesheet" href="fonts/SourceCodePro-Regular.ttf.woff2">
+    <style>
+      .todo{
+        background-image: url(Elementos/FlechasAI.png), url(Elementos/FlechaAD.png), url(Elementos/FlechasBI.png), url(Elementos/FlechasBD.png),
+        url(Elementos/barra.png), url(Elementos/barra.png);
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+        background-position: left top, right top, left bottom, right bottom, left center, right center;
+        background-size: 80px;
+        padding: 0%;
+        margin: 0%;
+      }
+      .content{
+        margin-left: 80px;
+        margin-right: 80px;
+        padding-left: 60px;
+        padding-right: 60px;
+        background-color: rgb(183, 247, 225);
+      }
+      @font-face {
+        font-family: "Staatliches";
+        src: url(Elementos/Staatliches-Regular.ttf);
+      }
+      @font-face {
+        font-family: "Outfit";
+        src: url(Elementos/Outfit-Regular.woff2);
+      }
+      @font-face {
+        font-family: "BebasNeue";
+        src: url(Elementos/BebasNeue-Regular.woff2);
+      }
+      body{
+        background-color: rgb(183, 247, 225);
+        margin: 0px;
+      }
+      h1{
+        font-family: "Staatliches";
+        font-size: 60px;
+        color: darkcyan;
+        text-align: center;
+        text-decoration: underline;
+        margin-bottom: 20px;
+      }
+      .titulos{
+        border-bottom: 1px solid white;
+        margin: 0px;
+        padding: 0px;
+        background-color: darkcyan;
+      }
+      h2{
+        font-family: "BebasNeue";
+        font-style: normal;
+        text-align: justify;
+        color: white;
+      }
+      h3{
+        font-family: "Outfit";
+        text-align: center;
+        font-size: 22px;
+        color: darkcyan;
+      }
+      p{
+        font-family: "Outfit";
+        text-align: justify;
+        color: white;
+      }
+      .textgreen{
+        color: lawngreen;
+      }
+      .textcyan{
+        color: cyan;
+      }
+      .textyellow{
+        color: yellow;
+      }
+      .nav{
+        text-align: center;
+      }
+      .nav div{
+        text-align: center;
+        display: inline-flex;
+        border: 2px solid darkcyan;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        margin: 5px;
+        width: 80px;
+        height: 30px;
+        transition: width 0.5s;
+        transition: height 0.5s;
+      }
+      .nav div:hover{
+        width: 100px;
+        height: 50px;
+      }
+      .nav div p{
+        text-align: center;
+        color: darkcyan;
+        padding: 0px;
+        margin-top: 3px;
+        margin-left: 10px;
+      }
+      .nav div p a{
+        text-decoration: underline 2px solid;
+        color: darkcyan;
+      }
+      .p1{
+        background-color: darkcyan;
+        border: 2px solid;
+        border-color: white;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        margin-top: 20px;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .p1 a{
+        text-decoration: underline 1px solid;
+        color: white;
+      }
+      .p1 img{
+        height: 150px;
+        float: right;
+        border: 4px solid;
+        border-color: white;
+        outline: 4px solid lawngreen;
+        margin-top: 0%;
+        margin-left: 20px;
+        margin-right: 5px;
+        margin-top: 20px;
+      }
+      .p2{
+        background-color: darkcyan;
+        border: 2px solid;
+        border-color: white;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        margin-top: 20px;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .p2 a{
+        text-decoration: underline 1px solid;
+        color: white;
+      }
+      .p2 img{
+        height: 200px;
+        float: left;
+        border: 4px solid;
+        border-color: white;
+        outline: 4px solid lawngreen;
+        margin-top: 0%;
+        margin-right: 20px;
+        margin-left: 5px;
+        margin-top: 20px;
+      }
+      .extra{
+        background-color: darkcyan;
+        border: 2px solid;
+        border-color: white;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        margin-top: 20px;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .extra a{
+        text-decoration: underline 1px solid;
+        color: white;
+      }
+      .extra img{
+        height: 225px;
+        float: right;
+        border: 4px solid;
+        border-color: white;
+        outline: 4px solid lawngreen;
+        margin-top: 0%;
+        margin-left: 20px;
+        margin-right: 5px;
+        margin-top: 20px;
+      }
+      .piePag{
+        border-top: 2px solid green;
+        border-bottom: 2px solid green;
+        margin-top: 20px;
+        padding: 0px;
+      }
+      .piePag p{
+        color: black;
+        font-size: 12px;
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo">
+      <div class="content">
+        <h1>Portafolio de Evidencias</h1>
+
+        <h3>Consulta las prácticas realizadas en la clase de Programación Web I</h3>
+        <h3>Beltrán Reyna David - 183636</h3>
+
+        <div class="nav">
+          <div><p><a href="#Parcial1">Parcial 1</a></p></div><div><p><a href="#Parcial2">Parcial 2</a></p></div>
+          <div><p><a href="#Extras">Extras</a></p></div>
+        </div>
+
+        <div id="Parcial1" class="p1">
+          <h2 class="titulos">Parcial 1</h2>
+
+          <p>En esta sección se encuentran los siguientes vínculos a los ejercicios correspondientes del <span class="textcyan">Primer Parcial</span>.</p>
+
+          <p><span class="textgreen">Prácticas</span><br>
+            <a href="Practica1_HTML_183636" title="Revisa la práctica 1">Práctica 1</a> - 
+            <a href="Practica_2.0_183636.html" title="Revisa la práctica 2">Práctica 2</a> - 
+            <a href="Practica_3.html" title="Revisa la práctica 3">Práctica 3</a> - 
+            <a href="Practica_4.html" title="Revisa la práctica 4">Práctica 4</a> - 
+            <a href="Practica_5.html" title="Revisa la práctica 5">Práctica 5</a> - 
+            <a href="Practica_6_Hipervinculos.html" title="Revisa la práctica 6">Práctica 6</a> - 
+            <a href="Practica_7.html" title="Revisa la práctica 7">Práctica 7</a> - 
+            <a href="SistemaSolar/SistemaSolar.html" title="Revisa el Sistema Solar HTML">Sistema Solar</a> - 
+            <a href="Reproductor/Videos.html" title="Revisa el Reproductor HTML">Reproductor</a> - 
+            <a href="sitiossubsitios.html" title="Revisa los Sitios y Subsitios HTML">Sitios y subsitios</a> - 
+            <a href="Tutorias.html" title="Revisa el formulario de tutorías">Tutorías</a> - 
+            <a href="Examen/examen.html" title="Revisa el Examen">ExamenP1</a>
+          </p>
+
+          <p><span class="textyellow">Retos</span><br>
+            <a href="Reto1.html" title="Revisa el Reto">Reto</a>
+          </p>
+        </div>
+
+        <div id="Parcial2" class="p2">
+          <h2 class="titulos">Parcial 2</h2>
+
+          <p>En esta sección se encuentran los siguientes vínculos a los ejercicios correspondientes del <span class="textcyan">Segundo Parcial</span>.</p>
+
+          <p><span class="textgreen">Prácticas</span><br>
+            <a href="Parcial2/Practica1_P2.html">1.1 Practica1CSS</a> - 
+            <a href="Parcial2/Letra_Cancion.html">1.2 Practica2CSS</a> - 
+            <a href="Parcial2/EjercicioClase1.html">4. EjercicioClases1</a> - 
+            <a href="Parcial2/EjercicioClase2.html">5. EjercicioClases2</a> - 
+            <a href="Parcial2/SieteBarrios/BarriosSLP.html">8. SieteBarriosSLP</a> - 
+            <a href="Parcial2/EstilosAvanzados/practica1.html">9.1 EstilosAvanzadosP1</a> - 
+            <a href="Parcial2/EstilosAvanzados/practica2.html">9.2 EstilosAvanzadosP2</a> - 
+            <a href="Parcial2/EstilosAvanzados/practica3.html">9.3 EstilosAvanzadosP3</a> - 
+            <a href="Parcial2/Resuelve1.html">11. Resuelve&Publica1</a> - 
+            <a href="Parcial2/Resuelve2.html">12. Resuelve&Publica2</a> - 
+            <a href="Parcial2/PracticaCSS3.html">13. PracticaCSS3</a> - 
+            <a href="Parcial2/Reto1CSS.html">14.1 EjerciciosAvanzados_RetoCSS</a> - 
+            <a href="Parcial2/Ejercicio_Museos.html">14.2 EjerciciosAvanzados_Museos</a> - 
+            <a href="Parcial2/Ejercicio_CitasCSS.html">14.3 EjerciciosAvanzados_CitasOscarWilde</a> - 
+            <a href="Parcial2/Ejercicio_Revistas.html">15. EjerciciosRevistas</a> - 
+            <a href="Parcial2/Animaciones.html">16.1 Animaciones1</a> - 
+            <a href="Parcial2/Animaciones2.html">16.2 Animaciones2</a> - 
+            <a href="Parcial2/Transformaciones.html">16.3 Transformaciones1</a> - 
+            <a href="Parcial2/Transformaciones2.html">16.4 Transformaciones2</a> - 
+            <a href="Parcial2/MenuAnimado.html">17. MenuAnimado </a>- 
+            <a href="ExamenP2/Examen_Videojuegos.html">ExamenP2</a>
+          </p>
+          
+          <p><span class="textyellow">Retos</span><br>
+            <a href="Parcial2/RetoP2.html">2. Reto1CSS</a> - <a href="Parcial2/Horario.html">3. Reto2CSS: Horario</a>
+          </p>
+        </div>
+
+        <div id="Extras" class="extra">
+          <h2 class="titulos">Extras</h2>
+ 
+          <p>En esta sección se encuentran los siguientes vínculos a los ejercicios <span class="textcyan">extras</span>.</p>
+
+            <p><a href="Elementos/Beltrán Reyna David_183636_Modelaje Web.jpg">Infografía</a> - 
+              <a href="https://sites.google.com/view/the-strokes-la-besto-banda/inicio">Sitio Google Sites</a> - 
+              <a href="https://the-strokes-la-besto-banda.my.canva.site/beltranos">Sitio Canva</a>
+            </p>
+        </div>
+
+        <div id="PiePagina" class="piePag">
+          <p>Datos de contacto</p>
+          <p><a href="mailto: 183636@upslp.edu.mx" title="183636@upslp.edu.mx">Correo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel: +52 444 496 3166" title="444 496 3166">Teléfono</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.upslp.edu.mx/upslp/" title="Página de la Universidad">UPSLP</a>
+          </p>
+          <p>Derechos de Autor &copy; 2024 - Todos los derechos reservados</p>
+        </div>
+      </div>
+    </div>
+      </body>
+</html>
