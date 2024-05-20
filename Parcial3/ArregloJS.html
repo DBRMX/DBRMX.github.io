@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+    <body>
+        <h1>JS Arreglos</h1>
+        <p>Click en la opcion</p>
+        <button onclick="llenar()">Llenar arreglo</button>
+        <button onclick="imprimir()">Imprimir arreglo</button>
+        <button onclick="ordenar()">Ordenar arreglo</button>
+        <button onclick="reversa()">Reversa arreglo</button>
+        <button onclick="tabla()">Hacer tabla</button>
+        <p id="demo"></p>
+        <script>
+            var arreglo=[0,0,0,0,0,0,0,0,0,0,];
+            function llenar() {
+                //document.getElementById("demo").innerHTML = "Entraste a la primera opción";
+                for(i=0; i<10; i++){
+                    arreglo[i]=Math.floor(Math.random()*100+1);
+                }
+            }
+            function imprimir() {
+                document.getElementById("demo").innerHTML = "Contenido del arreglo", arreglo;
+            }
+            function ordenar() {
+                //document.getElementById("demo").innerHTML = "Entraste a la tercera opción";
+                arreglo=arreglo.sort(function(a, b){returna - b});
+            }
+            function reversa() {
+                //document.getElementById("demo").innerHTML = "Entraste a la cuarta opción";
+                arreglo=arreglo.reverse();
+            }
+            function tabla() {
+                var texto="";
+                texto=texto+"<table border=1><tr>";
+                for(i=0; i<10; i++){
+                    texto=texto+"<td>"+arreglo[i]+"</td>";
+                }
+                texto=texto+"</tr></table>";
+                document.getElementById("demo").innerHTML = texto;
+            }
+            //document.write(arreglo);
+        </script>
+    </body>
+</html>

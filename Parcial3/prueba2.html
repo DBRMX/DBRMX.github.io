@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahorcado</title>
+    <style>
+        @font-face {
+            font-family: "Staatliches";
+            src: url(Recursos/Staatliches-Regular.ttf);
+        }
+        @font-face {
+            font-family: "BebasNeue";
+            src: url(Recursos/BebasNeue-Regular.woff2);
+        }
+        @font-face {
+            font-family: "Outfit";
+            src: url(Recursos/Outfit-Regular.woff2);
+        }
+        h1{
+            font-family: "Staatliches";
+        }
+        h2{
+            font-family: "BebasNeue";
+        }
+        button{
+            font-family: "Outfit";
+        }
+        canvas{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ahorcado</h1>
+    <h2>Adivina la palabra</h2>
+    <div id="palabra"></div>
+    <canvas id="elPapu" width="200" height="200"></canvas><br>
+    <input type="text" id="letra">
+    <button onclick="comprobarLetra()">Comprobar letra</button>
+    <button onclick="dibujar()">Dibujar</button>
+    <button onclick="borrar()">Borrar</button>
+
+    <script>
+        // Obtener el canvas y su contexto
+        var canvas = document.getElementById('elPapu');
+        var ctx = canvas.getContext('2d');
+
+        // Coordenadas de la cabeza del monito
+        var cabezaX = canvas.width / 2;
+        var cabezaY = 50;
+        var cabezaRadio = 30;
+        var dibujoActual = 0; // Sigue el progreso del dibujado
+
+        // Palabra a adivinar
+        var palabraAdivinar = "AHORCADO";
+        var letrasCorrectas = []; // Letras correctas adivinadas
+        var letrasIncorrectas = []; // Letras incorrectas adivinadas
+
+        // Función para dibujar el monito
+        function dibujar() {
+            // Dibujar la parte actual del monito
+            switch (dibujoActual) {
+                case 0: // Dibujar cabeza
+                    ctx.beginPath();
+                    ctx.arc(cabezaX, cabezaY, cabezaRadio, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'cyan';
+                    ctx.fill();
+                    ctx.closePath();
+                    break;
+                case 1: // Dibujar cuerpo
+                    ctx.beginPath();
+                    ctx.moveTo(canvas.width / 2, 80);
+                    ctx.lineTo(canvas.width / 2, 150);
+                    ctx.strokeStyle = 'darkcyan';
+                    ctx.stroke();
+                    ctx.closePath();
+                    break;
+                case 2: // Dibujar brazos
+                    ctx.beginPath();
+                    ctx.moveTo(canvas.width / 2, 90);
+                    ctx.lineTo(canvas.width / 2 - 40, 120);
+                    ctx.moveTo(canvas.width / 2, 90);
+                    ctx.lineTo(canvas.width / 2 + 40, 120);
+                    ctx.strokeStyle = 'darkcyan';
+                    ctx.stroke();
+                    ctx.closePath();
+                    break;
+                case 3: // Dibujar piernas
+                    ctx.beginPath();
+                    ctx.moveTo(canvas.width / 2, 150);
+                    ctx.lineTo(canvas.width / 2 - 30, 200);
+                    ctx.moveTo(canvas.width / 2, 150);
+                    ctx.lineTo(canvas.width / 2 + 30, 200);
+                    ctx.strokeStyle = 'darkcyan';
+                    ctx.stroke();
+                    ctx.closePath();
+                    break;
+                case 4: // Última parte del monito dibujada
+                    alert("¡Perdiste! La palabra correcta era '" + palabraAdivinar + "'.");
+                    break;
+            }
+
+            dibujoActual++; // Incrementar el progreso del dibujo
+        }
+
+        // Función para comprobar la letra ingresada
+        function comprobarLetra() {
+            var letra = document.getElementById('letra').value.toUpperCase();
+            if (letra.length !== 1) {
+                alert("Por favor, ingrese solo una letra.");
+                return;
+            }
+            if (letrasCorrectas.includes(letra) || letrasIncorrectas.includes(letra)) {
+                alert("Esta letra ya ha sido seleccionada.");
+                return;
+            }
+            if (palabraAdivinar.includes(letra)) {
+                letrasCorrectas.push(letra);
+                actualizarPalabra();
+                if (palabraAdivinar === letrasCorrectas.join("")) {
+                    alert("¡Ganaste! Has adivinado la palabra '" + palabraAdivinar + "'.");
+                    return; // Salir de la función después de mostrar la alerta de victoria
+                }
+            } else {
+                letrasIncorrectas.push(letra);
+                dibujar();
+            }
+        }
+
+        // Función para actualizar la visualización de la palabra a adivinar
+        function actualizarPalabra() {
+            var palabraMostrada = "";
+            for (var i = 0; i < palabraAdivinar.length; i++) {
+                var letra = palabraAdivinar[i];
+                if (letrasCorrectas.includes(letra)) {
+                    palabraMostrada += letra;
+                } else {
+                    palabraMostrada += "_";
+                }
+                palabraMostrada += " ";
+            }
+            document.getElementById('palabra').innerText = palabraMostrada;
+        }
+
+        // Función para borrar
+        function borrar() {
+            // Borrar la letra ingresada
+            document.getElementById('letra').value = "";
+
+            // Si no se ha borrado todo, retroceder para borrar la parte anterior
+            if (dibujoActual > 0) {
+                dibujoActual--;
+            }
+
+            // Borrar la parte actual del monito
+            switch (dibujoActual) {
+                case 0: // Borrar cabeza
+                    ctx.clearRect(cabezaX - cabezaRadio, cabezaY - cabezaRadio, cabezaRadio * 2, cabezaRadio * 2);
+                    break;
+                case 1: // Borrar cuerpo
+                    ctx.clearRect(canvas.width / 2 - 2, 80, 4, 150 - 80);
+                    break;
+                case 2: // Borrar brazos
+                    ctx.clearRect(canvas.width / 2 - 40, 90, 40, 30);
+                    ctx.clearRect(canvas.width / 2, 90, 40, 30);
+                    break;
+                case 3: // Borrar piernas
+                    ctx.clearRect(canvas.width / 2 - 30, 150, 30, 200 - 150);
+                    ctx.clearRect(canvas.width / 2, 150, 30, 200 - 150);
+                    break;
+            }
+
+            // Actualizar la palabra mostrada
+            actualizarPalabra();
+        }
+
+        // Mostrar la palabra inicialmente como guiones bajos
+        actualizarPalabra();
+    </script>
+</body>
+</html>

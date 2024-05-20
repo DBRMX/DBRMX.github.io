@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gráficas - Ejercicio 1</title>
+    </head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <body>
+        <div id="myPlot" style="width:100%;max-width:700px"></div>
+        <div id="myPlot2" style="width:100%;max-width:700px"></div>
+        <div id="myPlot3" style="width:100%;max-width:700px"></div>
+        <script>
+            //Grafica 1
+            const xArray = ["Progra I", "Progra Web", "Mate I", "Física I", "CNG II", "Inglés IV"];
+            const yArray = [85, 85, 90, 65, 100, 90];
+            const data = [{
+            x:xArray,
+            y:yArray,
+            type:"bar",
+            orientation:"v",
+            marker: {color:"rgba(0,0,255,0.6)"}
+            }];
+            const layout = {title:"Primer Parcial"}; //Título de la gráfica
+            Plotly.newPlot("myPlot", data, layout);
+            
+            //Grafica 2
+            const xArray2 = ["Progra I", "Progra Web", "Mate I", "Física I", "CNG II", "Inglés IV"];
+            const yArray2 = [80, 90, 90, 70, 100, 0];
+            const data2 = [{
+            x:xArray2,
+            y:yArray2,
+            type:"bar",
+            orientation:"v",
+            marker: {color:"red"}
+            }]
+            const layout2 = {title:"Segundo Parcial"}; //Título de la gráfica
+            Plotly.newPlot("myPlot2", data2, layout2);
+
+            //Gráfica 3
+            const xArray3 = ["Progra I", "Progra Web", "Mate I", "Física I", "CNG II", "Inglés IV"];
+            const yArray3 = [0, 0, 0, 0, 0, 0];
+            for(i=0; i<10; i++){
+                yArray3[i]=Math.floor(Math.random()*100+1);
+            }
+            const data3 = [{
+            x:xArray3,
+            y:yArray3,
+            type:"bar",
+            orientation:"v",
+            marker: {color:"green"}
+            }]
+            const layout3 = {title:"Calis Random"}; //Título de la gráfica
+            Plotly.newPlot("myPlot3", data3, layout3);
+        </script>
+    </body>
+</html>

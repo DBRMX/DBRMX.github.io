@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Password</title>
+        <script type = "text/javascript">
+            function alertName() {
+                var usuario1= document.forms[0].user.value;
+                var password1= document.forms[0].pass.value;
+                document.write("<table border=1>");
+                for(i=0;i<1;i++)
+                {
+                    document.write("<tr>");
+
+                    for(j=0;j<1;j++){
+                        document.write("<td>"+usuario1+"</td>");
+                    }
+                    document.write("<td>"+password1+"</td>");
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+                return true;
+            }
+        </script>
+    </head>
+
+    <body>
+        <form id="myform" onsubmit="return alertName();">
+        <p>Usuario: <input id="user" name="user" type="text" /></p>
+        <p>Password: <input id="pass" name="pass" type="text" /></p>
+        <p><input type="submit" /></p>
+        </form>
+    </body>
+</html>

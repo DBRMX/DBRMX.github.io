@@ -1,0 +1,61 @@
+<!--Math.floor(Math.random()*100)+1-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reto2_P3 Grados</title>
+        <script type = "text/javascript">/*Definimos que pertenece a javaScript*/
+            function alertName() {
+                var filas1= parseInt(document.forms[0].filas.value);
+                var cols= parseInt(document.forms[0].col.value);/*Forma de definir una variable, no es necesario*/
+                var grados1= parseInt(document.forms[0].grados.value);
+                var opc= parseFloat(document.forms[0].opciones.value);
+                /*var car1= document.forms[0].car.value;*/
+                var conversionK= (grados1+32);
+                var conversionF= (grados1+273);
+                document.write("<table border=1>");
+                for(i=0;i<3;i++)
+                {
+                    document.write("<tr>");
+
+                    for(j=0;j<1;j++){
+                        if(i==0){
+                            document.write("<td>"+"C°"+grados1+"</td>");
+                        }
+                        else if(i==1){
+                            if(opc==1){
+                                document.write("<td>Tu opción elegida: Kelvin</td>");
+                            }
+                            else{
+                                document.write("<td>Tu opción elegida: Farenheit</td>");
+                            }
+                        }
+                        else{
+                            if(opc==1){
+                                document.write("<td>"+"Equivale a"+conversionK+"</td>");
+                            }
+                            else{
+                                document.write("<td>"+"Equivale a"+conversionF+"</td>");
+                            }
+                        }
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+                return true;
+            }
+        </script>
+    </head>
+
+    <body>
+        <form id="myform" onsubmit="return alertName();">
+        <p>Grados Celsius: <input id="grados" name="grados" type="text" /></p>
+        <p>Convertir a: 
+            <select name="opciones" id="opciones">
+                <option value="1">Kelvin</option>
+                <option value="2">Farenheit</option>
+            </select>
+        </p>
+        <p><input type="submit" /></p>
+        </form>
+    </body>
+</html>

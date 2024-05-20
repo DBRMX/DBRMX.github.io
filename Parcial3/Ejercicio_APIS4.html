@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gráficas - Ejercicio 4</title>
+    </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <body>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script>
+            const xValues = ["Progra I", "Progra Web", "Mate I", "Fisica I", "CNG II", "Ingles IV"];
+            const yValues = [80, 90, 90, 70, 100, 90];
+            const barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+            "#1e7145",
+            "cyan"
+            ];
+            new Chart("myChart", {
+            type: "pie",
+            data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+            },
+            options: {
+            title: {
+            display: true,
+            text: "Segundo Parcial"
+            }
+            }
+            });
+        </script>
+    </body>
+</html>

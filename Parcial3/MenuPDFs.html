@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu con practicas PDF's</title>
+        <style>
+            @font-face {
+                font-family: "Staatliches";
+                src: url(Recursos/Staatliches-Regular.ttf);
+            }
+            @font-face {
+                font-family: "BebasNeue";
+                src: url(Recursos/BebasNeue-Regular.woff2);
+            }
+            @font-face {
+                font-family: "Outfit";
+                src: url(Recursos/Outfit-Regular.woff2);
+            }
+            body{
+                text-align: center;
+            }
+            h1{
+                font-family: "Staatliches";
+            }
+            h2{
+                font-family: "BebasNeue";
+            }
+            p{
+                font-family: "Outfit";
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Actividades PDF's</h1>
+        <h2>Beltrán Reyna David</h2>
+        <button onclick="PDF1()">Test con PDF</button>
+        <button onclick="PDF2()">Reto - Pirámide de caracteres</button>
+
+        <p id="cambiante"></p>
+        <iframe src=""; name="iframe_c"; height="600px"; width="100%"; title="contenido"></iframe>
+
+        <script>
+            function PDF1(){
+                document.getElementById("cambiante").innerHTML = "<a href=PDFs/TestconPDF.html target=iframe_c>Link Test con PDF: </a>";
+            }
+            function PDF2(){
+                document.getElementById("cambiante").innerHTML = "<a href=PDFs/Reto1_PDF.html target=iframe_c>Link Reto de Pirámide: </a>";
+            }
+        </script>
+    </body>
+</html>

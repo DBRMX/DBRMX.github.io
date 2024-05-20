@@ -1,0 +1,35 @@
+<!--Math.floor(Math.random()*100)+1-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reto1_P3 Numeros aleatorios</title>
+        <script type = "text/javascript">/*Definimos que pertenece a javaScript*/
+            function alertName() {
+                var filas1= parseInt(document.forms[0].filas.value);
+                var cols= parseInt(document.forms[0].col.value);/*Forma de definir una variable, no es necesario*/
+                /*var car1= document.forms[0].car.value;*/
+                document.write("<table border=1>");
+                for(i=1;i<=filas1;i++)
+                {
+                    document.write("<tr>");
+
+                    for(j=1;j<=cols;j++){
+                        var random= Math.floor(Math.random()*100)+1; //Para reiniciar variable
+                        document.write("<td>"+random+"</td>");
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+                return true;
+            }
+        </script>
+    </head>
+
+    <body>
+        <form id="myform" onsubmit="return alertName();">
+        <p>Filas <input id="filas" name="filas" type="text" /></p>
+        <p>Columnas <input id="col" name="col" type="text" /></p>
+        <p><input type="submit" /></p>
+        </form>
+    </body>
+</html>

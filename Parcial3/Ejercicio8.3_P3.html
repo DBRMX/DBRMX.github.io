@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Alert y Prompt</title>
+    </head>
+    <body>
+        <script>
+            //Declarar variables con var o let
+            let width = prompt("Volumen de la caja, ingresa el ancho", 0/*Texto y valor por default*/); //Prompt son cuadros de diálogo, se van mostrando y se van quitando
+            let height = prompt("Volumen de la caja, ingresa la altura", 0); //Mensajes emergentes
+            let length = prompt("Volumen de la caja, ingresa la longitud", 0);
+            let volume = width * height * length; //Producto de las otras variables
+            alert(`El volumen de la caja es ${volume}`);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<body>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+
+<script>
+// Solicitar al usuario que ingrese la expresión matemática
+let exp = "Math.sin(x)";
+// Solicitar al usuario que ingrese la x inicial
+let xInicial = parseFloat(prompt("Ingrese el valor inicial para x:"));
+
+// Verificar si el usuario ha ingresado un número válido
+if (!isNaN(xInicial)) {
+    // Solicitar al usuario que ingrese la x final
+    let xFinal = parseFloat(prompt("Ingrese el valor final para x:"));
+
+    // Verificar si el usuario ha ingresado un número válido y mayor que la x inicial
+    if (!isNaN(xFinal) && xFinal > xInicial) {
+        const xValues = [];
+        const yValues = [];
+
+        // Generar los valores usando los valores ingresados por el usuario
+        for (let x = xInicial; x <= xFinal; x += 0.1) {
+            xValues.push(x);
+            yValues.push(eval(exp.replace("x", x))); // Evaluar la expresión con el valor de x
+        }
+
+        // Mostrar usando Plotly
+        const data = [{x:xValues, y:yValues, mode:"lines"}];
+        const layout = {title: "y = " + exp};
+        Plotly.newPlot("myPlot", data, layout);
+    } else {
+        alert("El valor final para x debe ser un número válido y mayor que el valor inicial.");
+    }
+} else {
+    alert("El valor inicial para x debe ser un número válido.");
+}
+</script>
+</body>
+</html>
