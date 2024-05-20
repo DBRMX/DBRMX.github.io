@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Los Sietes Barrios de San Luis Potosí</title>
+        <style>
+            h1{
+              text-align: center;
+              font-size: 36px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            div.gallery{
+                margin: 5px;
+                border: 1px solid #ccc;
+                float: left;
+                width: 180px;
+            }
+            div.gallery:hover{
+                border: 1px solid gray;
+            }
+            div.gallery img{
+                width: 100%;
+                height: auto;
+            }
+            div.desc{
+                padding: 15px; 
+                text-align: center;
+            }
+            * {
+              box-sizing: border-box;
+            }
+            .responsive {
+              padding: 0 6px;
+              float: left;
+              width: 24.99999%;
+            }
+            @media only screen and (max-width: 700px) {
+              .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+              }
+            }
+            @media only screen and (max-width: 500px) {
+              .responsive {
+                width: 100%;
+              }
+            }
+            .clearfix:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+        </style>
+    </head>
+    <body>      
+        <h1>Los Siete Barrios de San Luis Potosí</h1>
+          <div class="gallery"> <!--Primer barrio-->
+            <a target="_blank" href="Tlaxcala.html">
+              <img src="Recursos/BTlaxcala.jpg" alt="Tlaxcala" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de Tlaxcala</div>
+          </div>
+          <div class="gallery"> <!--Segundo barrio-->
+            <a target="_blank" href="SanMiguelito.html">
+              <img src="Recursos/BSanMiguelito.jpg" alt="San Miguelito" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de San Miguelito</div>
+          </div>
+          <div class="gallery"> <!--Tercer barrio-->
+            <a target="_blank" href="Montecillo.html">
+              <img src="Recursos/BMontecillo.jpg" alt="Montecillo" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de Montecillo</div>
+          </div>
+          <div class="gallery"> <!--Cuarto barrio-->
+            <a target="_blank" href="SanJuandeGuadalupe.html">
+              <img src="Recursos/BSa_JuandeGuadalupe.jpg" alt="San Juan de Guadalupe" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de San Juan de Guadalupe</div>
+          </div>
+          <div class="gallery"> <!--Quinto barrio-->
+            <a target="_blank" href="SanSebastian.html">
+              <img src="Recursos/BSanSebastian.jpg" alt="San Sebastián" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de San Sebastián</div>
+          </div>
+          <div class="gallery"> <!--Sexto barrio-->
+            <a target="_blank" href="Santiago.html">
+              <img src="Recursos/BSantiago.jpg" alt="Santiago" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de Santiago</div>
+          </div>
+          <div class="gallery"> <!--Septimo barrio-->
+            <a target="_blank" href="Tequisquiapan.html">
+              <img src="Recursos/BTequis.jpg" alt="Tequisquiapan" width="600" height="400">
+            </a>
+            <div class="desc">Barrio de Tequisquiapan</div>
+          </div>
+    </body>
+</html>
