@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Tercer Parcial - Version C</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "Outfit";
+            src: url(Recursos/Outfit-Regular.woff2);
+        }
+
+        body{
+            font-family: "Outfit";
+            background-color: #D4F8FF; /* Color5 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .cajita{
+            background-color: #9DECFA; /* Color4 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1{
+
+            color: #035361; /* Color3 */
+        }
+
+        button{
+            background-color: #228394; /* Color1 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #56B6C7; /* Color2 */
+        }
+
+        #ContenedorPDF{
+            margin-top: 20px;
+        }
+
+        iframe{
+            border: 1px solid #035361; /* Color3 */
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function solicitarNumeros(){
+            const numeros = []; //Arreglo de la secuencia
+            let i;
+            let numero = 0;
+            for(i = 0; i < 10; i++){
+                numero = prompt(`Ingrese el número ${i + 1} (entre 0 y 25):`);
+                numero = parseInt(numero);
+                
+                while(isNaN(numero) || numero < 0 || numero > 25){ //"isNaN" = is Not a Number
+                    numero = prompt(`Número inválido. Ingrese nuevamente el número ${i + 1} (entre 0 y 25):`);
+                    numero = parseInt(numero);
+                }
+                
+                numeros.push(numero);
+            }
+            
+            const letras = convertirANumerosALetras(numeros);
+            alert("Los números ingresados son: " + numeros.join(", "));
+            alert("La secuencia de letras es: " + letras.join(", "));
+
+            generarPDF(numeros, letras); //Llamar a la función que genera el PDF
+        }
+
+        function convertirANumerosALetras(numeros){
+            const letras = [];
+            for(let i = 0; i < numeros.length; i++){
+                letras.push(String.fromCharCode(65 + numeros[i])); //Usando el ASCII
+            }
+            return letras; //Retornar el valor de la función hacia la constante de letras
+        }
+
+        function generarPDF(numeros, letras){
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("Secuencia de Números a Letras", 10, 10);
+            doc.text("Números: " + numeros.join(", "), 10, 20);
+            doc.text("Letras: " + letras.join(", "), 10, 30);
+            
+            //Generar el PDF como blob y mostrarlo en un iframe
+            const pdfBlob = doc.output("blob");
+            const url = URL.createObjectURL(pdfBlob);
+            
+            const iframe = document.createElement("iframe");
+            iframe.style.width = "80%";
+            iframe.style.height = "300px";
+            iframe.src = url;
+            
+            const pdfContainer = document.getElementById("ContenedorPDF");
+            pdfContainer.innerHTML = ""; //Limpia el contenido
+            pdfContainer.appendChild(iframe);
+        }
+    </script>
+</head>
+<body>
+    <div class="cajita">
+        <h1>Ingreso de Secuencia de Números</h1>
+        <button onclick="solicitarNumeros()">Ingresar Números</button>
+        <div id="ContenedorPDF"></div>
+    </div>
+</body>
+</html>

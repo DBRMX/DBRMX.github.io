@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secuencia de Números a Letras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D4F8FF; /* Color5 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #9DECFA; /* Color4 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #035361; /* Color3 */
+        }
+
+        button {
+            background-color: #228394; /* Color1 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #56B6C7; /* Color2 */
+        }
+
+        #pdfContainer {
+            margin-top: 20px;
+        }
+
+        iframe {
+            border: 1px solid #035361; /* Color3 */
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        function solicitarNumeros() {
+            const numeros = [];
+            for (let i = 0; i < 10; i++) {
+                let numero = prompt(`Ingrese el número ${i + 1} (entre 0 y 25):`);
+                numero = parseInt(numero);
+                
+                while (isNaN(numero) || numero < 0 || numero > 25) {
+                    numero = prompt(`Número inválido. Ingrese nuevamente el número ${i + 1} (entre 0 y 25):`);
+                    numero = parseInt(numero);
+                }
+                
+                numeros.push(numero);
+            }
+            
+            const letras = convertirANumerosALetras(numeros);
+            alert("Los números ingresados son: " + numeros.join(", "));
+            alert("La secuencia de letras es: " + letras.join(", "));
+            
+            generarPDF(numeros, letras);
+        }
+
+        function convertirANumerosALetras(numeros) {
+            const letras = [];
+            for (let i = 0; i < numeros.length; i++) {
+                letras.push(String.fromCharCode(65 + numeros[i]));
+            }
+            return letras;
+        }
+
+        function generarPDF(numeros, letras) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("Secuencia de Números a Letras", 10, 10);
+            doc.text("Números: " + numeros.join(", "), 10, 20);
+            doc.text("Letras: " + letras.join(", "), 10, 30);
+            
+            // Generar el PDF como blob y mostrarlo en un iframe
+            const pdfBlob = doc.output("blob");
+            const url = URL.createObjectURL(pdfBlob);
+            
+            const iframe = document.createElement("iframe");
+            iframe.style.width = "100%";
+            iframe.style.height = "600px";
+            iframe.src = url;
+            
+            const pdfContainer = document.getElementById("pdfContainer");
+            pdfContainer.innerHTML = ""; // Limpiar cualquier contenido anterior
+            pdfContainer.appendChild(iframe);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Ingreso de Secuencia de Números</h1>
+        <button onclick="solicitarNumeros()">Ingresar Números</button>
+        <div id="pdfContainer"></div>
+    </div>
+</body>
+</html>
